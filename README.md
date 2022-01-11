@@ -1,16 +1,7 @@
-# Stacking Sats on Kraken
+# Stacking XMR on Kraken
 
-First off: Here's to you, [Bittr](https://getbittr.com/) – you will be missed! 😢
-
-This script is not a full replacement for the incredible service Bittr offered, but it's a start:
-Automate your Stacking Sats process by regularly placing buy orders using the [Kraken API](https://www.kraken.com/features/api).
-
----
-
-The original [Bittr is back](https://getbittr.com/press-releases/bittr-is-back)!
-This script is still fully working.
-
----
+Automate your Stacking XMR process by regularly placing buy orders using the [Kraken API](https://www.kraken.com/features/api).
+This script has been forked from https://github.com/dennisreimann/stacking-sats-kraken
 
 ## ✋ Caveat
 
@@ -27,7 +18,7 @@ Generate a new API key dedicated for stacking using the "Query Funds" and "Modif
 
 ![Kraken API Key Permissions](./api-permissions.png)
 
-Only check the "Withdraw Funds" option if you plan to automatically withdraw Bitcoin from Kraken.
+Only check the "Withdraw Funds" option if you plan to automatically withdraw Monero from Kraken.
 See details below.
 
 ## ⚙️ Configuration
@@ -43,7 +34,7 @@ KRAKEN_API_SECRET="privateKeyFromTheKrakenSettings"
 KRAKEN_ORDER_TYPE="market" # "limit" (default) or "market"
 KRAKEN_API_FIAT="USD" # the governmental shitcoin you are selling
 KRAKEN_BUY_AMOUNT=21 # fiat amount you trade for the future of money
-KRAKEN_FEE_CURRENCY="XBT" # pay fee in this currency, e.g. buying XBT for USD and paying fee in XBT
+KRAKEN_FEE_CURRENCY="XMR" # pay fee in this currency, e.g. buying XMR for USD and paying fee in XMR
 
 # used for withdrawal
 KRAKEN_MAX_REL_FEE=0.5 # maximum fee in % that you are willing to pay
@@ -123,12 +114,12 @@ npm run test:stack
 You should see something like this sample output:
 
 ```text
-💰 Balance: 210000.00 USD / 21.0 XBT
+💰 Balance: 210000.00 USD / 21.0 XMR
 
 📈 Ask: 21000.2 USD
 📉 Bid: 21000.1 USD
 
-💸 Order: buy 0.21212121 XBTUSD @ limit 21000.1
+💸 Order: buy 0.21212121 XMRUSD @ limit 21000.1
 📎 Transaction ID: 2121212121
 ```
 
@@ -185,7 +176,7 @@ Make it executable with `chmod +x stacksats.sh` and go wild.
 Holding significant amounts on an exchange is never a good idea.
 You should regularly take ownership of your coins by withdrawing to your own wallet.
 This can either be done manually or it can be automated.
-The script provided here will only withdraw to a previously defined Bitcoin address if the relative fees do not exceed a certain limit.
+The script provided here will only withdraw to a previously defined Monero address if the relative fees do not exceed a certain limit.
 
 *It is optional to run the withdrawal script.*
 
@@ -205,7 +196,7 @@ The script provided here will only withdraw to a previously defined Bitcoin addr
 
 In case you plan to automatically withdraw from Kraken, a withdrawal method must first be defined.
 If you already set up a methode you can reuse it.
-Otherwise generate a new one by going to **Funding > Bitcoin (XBT) withdraw > Add address**.
+Otherwise generate a new one by going to **Funding > Monero (XMR) withdraw > Add address**.
 The description field will later be used as an environment variable in the script.
 
 To test the withdrawal of funds to your defined address run:
